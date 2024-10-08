@@ -1,6 +1,11 @@
 import { supabase } from "@/app/api/client/supabase";
+import { Http2ServerResponse } from "http2";
 
-function escapeXml(unsafe) {
+type SavedLink = {
+  link: string;
+};
+
+function escapeXml(unsafe: string): string {
   return unsafe
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -9,7 +14,7 @@ function escapeXml(unsafe) {
     .replace(/'/g, "&apos;");
 }
 
-function generateSiteMap(posts) {
+function generateSiteMap(posts: SavedLink[]) {
   return `<?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0">
       <channel>
@@ -26,7 +31,11 @@ function generateSiteMap(posts) {
     </rss>`;
 }
 
-export async function getServerSideProps({ res }) {
+export async function getServerSideProps({
+  res,
+}: {
+  res: Http2ServerResponse;
+}) {
   const { data: notes, error } = await supabase.from("links").select();
 
   if (error) {
