@@ -1,11 +1,5 @@
 import styles from './TestimonialsWall.module.css';
 
-type Testimonial = {
-    quote: string;
-    author: string;
-    role: string;
-    company: string;
-};
 
 const testimonials = [
     {

@@ -25,13 +25,6 @@ const useAuth = (): AuthState => {
     };
 };
 
-// Mock utility functions until implemented
-const isProtectedRoute = (pathname: string): boolean => {
-    return pathname.startsWith('/dashboard') ||
-        pathname.startsWith('/sites') ||
-        pathname.startsWith('/analytics');
-};
-
 const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -46,7 +39,7 @@ export default function Navigation() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { isAuthenticated, userProfile } = useAuth();
 
-    // const showThemeSwitcher = isAuthenticated && isProtectedRoute(pathname ?? '');
+
     const isHomePage = pathname === '/';
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
