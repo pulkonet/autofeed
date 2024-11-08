@@ -44,7 +44,7 @@ body::before {
     opacity: 0.5;
     transform: translate(-50%, -50%);
     background: radial-gradient(circle closest-side,
-            rgba(0, 112, 243, 0.15),
+            rgba(0, 112, 243, 0.35),
             transparent 100%);
     z-index: 9999;
     will-change: transform;
