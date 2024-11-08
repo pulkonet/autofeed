@@ -1,0 +1,115 @@
+.testimonialWall {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.testimonialRow {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    width: max-content;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+}
+
+.testimonialCard {
+    flex: 0 0 400px;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialCard:hover {
+    transform: translateY(-4px);
+}
+
+.quote {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: var(--foreground);
+    margin-inline-start: 0.5em;
+    margin-inline-end: 0.5em;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.authorInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.authorInfo strong {
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.authorInfo span {
+    font-size: 0.875rem;
+    color: var(--secondary);
+}
+
+/* Animation styles */
+.moveLeft {
+    animation-name: scrollLeft;
+}
+
+.moveRight {
+    animation-name: scrollRight;
+}
+
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* Pause animations on hover */
+.testimonialRow:hover {
+    animation-play-state: paused;
+}
+
+/* Make sure cards are visible on dark mode */
+@media (prefers-color-scheme: dark) {
+    .testimonialCard {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonialCard {
+        flex: 0 0 300px;
+    }
+}
